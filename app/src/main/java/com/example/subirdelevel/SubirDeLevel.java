@@ -25,16 +25,20 @@ public class SubirDeLevel {
                 int nivel = -1;
                 int repeticiones = -1;
 
+                int aleatorio = 1;
+
                 @Override
                 public void run() {
                     if (repeticiones < 0) {
                         repeticiones = 3;
                         nivel++;
-                        if (nivel == 7){
+                        if (nivel == 3){
                             nivel = 0;
+                            aleatorio = (int)(Math.random() * 3.0) +1;
                         }
                     }
-                    subirListener.cuandoDeLaOrden("TRANSFORMACION" + nivel + ":" + (repeticiones == 0 ? "Trasfromacion" : repeticiones));
+
+                    subirListener.cuandoDeLaOrden("TRANSFORMACION" + nivel + ":" + (repeticiones == 0 ? "Trasfromacion" : repeticiones) + ":PERSONAJE" + aleatorio);
                     repeticiones--;
                 }
             }, 0, 1, SECONDS);
